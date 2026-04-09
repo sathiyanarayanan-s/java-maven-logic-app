@@ -1,4 +1,4 @@
-package com.example;
+package com.yourcompany.app;
 
 public class App {
     public static void main(String[] args) {
