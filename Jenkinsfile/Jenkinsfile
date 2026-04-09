@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps { checkout scm }
+        }
+        stage('Build & Test') {
+            steps { sh 'mvn clean package' }
+        }
+        stage('Docker Build') {
+            steps {
+                sh 'docker build -t my-logic-app .'
+            }
+        }
+        stage('Run Container') {
+            steps {
+                sh 'docker run --rm my-logic-app'
+            }
+        }
+    }
+}
